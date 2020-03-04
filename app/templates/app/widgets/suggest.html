@@ -1,7 +1,3 @@
-{% if form_instance.instance.pk %}
-    <input type="hidden" id="pk" value="{{ form_instance.instance.pk }}">
-{% endif %}
-
 <input type="text" id="{{ widget.name }}-input" data-target="{{ widget.name }}"
        autocomplete="off" {% include "django/forms/widgets/attrs.html" %}>
 

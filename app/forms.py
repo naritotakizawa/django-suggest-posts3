@@ -12,7 +12,7 @@ class PostCreateForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['relation_posts'].widget = SuggestWidget(
-            attrs={'data-url': reverse_lazy('app:api_posts_get')},
-            form_instance=self,
-        )
+        attrs = {'data-url': reverse_lazy('app:api_posts_get')}
+        if self.instance.pk:
+            attrs['data-instancepk'] = self.instance.pk
+        self.fields['relation_posts'].widget = SuggestWidget(attrs=attrs)

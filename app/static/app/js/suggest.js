@@ -58,9 +58,8 @@ document.addEventListener('DOMContentLoaded', e => {
         element.addEventListener('keyup', () => {
             const keyword = element.value;
             let url = `${element.dataset.url}?keyword=${keyword}`;
-            const instance = document.getElementById('pk');
-            if (instance) {
-                url += '&pk=' + instance.value;
+            if (element.dataset.instancepk) {
+                url += '&pk=' + element.dataset.instancepk;
             }
             if (keyword) {
                 // 入力があるたびに、サーバーにそれを送信し、サジェスト候補を受け取る

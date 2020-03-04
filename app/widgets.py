@@ -10,15 +10,9 @@ class SuggestWidget(forms.SelectMultiple):
             'all': ['app/css/suggest.css']
         }
 
-    def __init__(self, form_instance, attrs=None):
+    def __init__(self, attrs=None):
         super().__init__(attrs)
-        self.form_instance = form_instance
         if 'class' in self.attrs:
             self.attrs['class'] += ' suggest'
         else:
             self.attrs['class'] = 'suggest'
-
-    def get_context(self, name, value, attrs):
-        context = super().get_context(name, value, attrs)
-        context['form_instance'] = self.form_instance
-        return context
